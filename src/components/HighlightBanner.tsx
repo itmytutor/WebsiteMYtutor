@@ -15,23 +15,23 @@ export const HighlightBanner: React.FC<HighlightBannerProps> = ({ onLearnMore })
   };
 
   return (
-    <section className="w-full bg-[#8ec3eb] text-white grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-sky-300/40">
+    <section className="w-full bg-[#69bc45] text-white grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-emerald-200/40 border-t border-b border-[#559a37]">
       {/* Left Box: Welcome */}
       <div className="p-6 lg:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-5">
         <img
           alt="Hands nurturing learning building blocks"
-          className="w-24 h-24 sm:w-28 sm:h-28 object-cover border-2 border-white/60 shadow-sm shrink-0 rounded-xs cursor-pointer hover:opacity-95 transition"
+          className="w-24 h-24 sm:w-28 sm:h-28 object-cover border-2 border-white/70 shadow-sm shrink-0 rounded-xs cursor-pointer hover:opacity-95 transition"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU4A635j7e40TFE1aOcHLqKP1PXSl764-0vYsOq3b9Jgz7nDYl3FQRV32kdPJXF11ZzX432UWMM6PiIdz4XVLQ4bRgYVvvhL68X8K4rRQixp_r6gc4X2SoWg4UClIGrByW-0aadjhJ44LNzmX4CmStmDJG3PezPzkhTRYRG6rhzHWJgQzpdOdA4XDrHVXkstrP-DdDo_qnDJYG3yu15RZVopEJozd_MxChkmyDjKkQJ3suXHHf2ThOcg"
           onClick={onLearnMore}
         />
         <div className="flex-1 text-center sm:text-left">
-          <h2 className="font-condensed text-2xl lg:text-3xl font-bold tracking-normal uppercase leading-tight drop-shadow-[0_1px_1px_rgba(0,0,0,0.1)]">
+          <h2 className="font-condensed text-2xl lg:text-3xl font-bold tracking-normal uppercase leading-tight drop-shadow-[0_1px_1px_rgba(0,0,0,0.15)]">
             WELCOME
           </h2>
-          <h3 className="font-normal text-xs lg:text-[13px] text-sky-100 font-semibold mt-1">
+          <h3 className="font-normal text-xs lg:text-[13px] text-emerald-100 font-semibold mt-1">
             Nurturing every child’s potential with individualized care
           </h3>
-          <p className="text-[11px] lg:text-xs text-sky-50 font-normal leading-relaxed mt-2 opacity-95">
+          <p className="text-[11px] lg:text-xs text-white/95 font-normal leading-relaxed mt-2 opacity-95">
             At MyTutorPH, we believe every learner thrives when given the right patience, individualized tools, and compassionate guidance. Whether your child requires SPED intervention, early developmental support, or focused academic enrichment, we walk alongside you.
           </p>
         </div>
@@ -44,10 +44,10 @@ export const HighlightBanner: React.FC<HighlightBannerProps> = ({ onLearnMore })
           {currentTestimonial.quote}
         </blockquote>
         <div className="flex items-center justify-between mt-4">
-          <p className="text-[11px] lg:text-xs text-sky-100 italic font-light tracking-wide">
+          <p className="text-[11px] lg:text-xs text-emerald-100 italic font-light tracking-wide">
             {currentTestimonial.author}
           </p>
-          <div className="flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition">
+          <div className="flex items-center gap-1.5 opacity-85 group-hover:opacity-100 transition">
             {TESTIMONIALS.map((_, idx) => (
               <button
                 key={idx}
@@ -61,7 +61,7 @@ export const HighlightBanner: React.FC<HighlightBannerProps> = ({ onLearnMore })
             <button
               onClick={handleNextTestimonial}
               title="Next quote"
-              className="ml-2 text-[10px] uppercase font-bold text-sky-100 hover:text-white cursor-pointer px-1.5 py-0.5 rounded bg-sky-600/30 hover:bg-sky-600/50"
+              className="ml-2 text-[10px] uppercase font-bold text-white cursor-pointer px-1.5 py-0.5 rounded bg-emerald-700/40 hover:bg-emerald-700/60"
             >
               Next
             </button>

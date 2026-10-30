@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { INSURANCE_CATEGORIES } from '../../data/insuranceData';
-import { GraduationCap, PhoneCall, CheckCircle, FileText, ArrowRight } from 'lucide-react';
+import { GraduationCap, CheckCircle, FileText, ArrowRight } from 'lucide-react';
 
 interface CategoryItemInfo {
   id: string;
@@ -24,7 +24,6 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
   const [selectedService, setSelectedService] = useState('SPED & Learning Intervention');
   const [learnerName, setLearnerName] = useState('');
   const [learnerAge, setLearnerAge] = useState('');
-  const [preferredSchedule, setPreferredSchedule] = useState('Weekday Afternoons');
   const [notes, setNotes] = useState('');
   const [requestSubmitted, setRequestSubmitted] = useState(false);
   const [bookingRef, setBookingRef] = useState('');
@@ -40,24 +39,24 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
 
   return (
     <div className="w-full bg-white flex flex-col">
-      {/* Banner */}
-      <section className="bg-gradient-to-r from-[#4c4d51] to-[#3a3b3e] text-white px-6 lg:px-12 py-8">
-        <span className="text-[10px] uppercase font-condensed tracking-wider font-semibold text-sky-300 block mb-1">
+      {/* Banner: changed from grey to Yellow #fbc232 */}
+      <section className="bg-[#fbc232] border-b border-[#dfab28] text-[#2a2208] px-6 lg:px-12 py-9">
+        <span className="text-[10px] uppercase font-condensed tracking-wider font-bold text-[#6e5008] block mb-1">
           Specialized Educational Programs & Tutoring
         </span>
-        <h1 className="font-condensed text-3xl lg:text-4xl font-bold uppercase tracking-tight">
+        <h1 className="font-condensed text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#261f06]">
           MYTUTORPH SERVICES
         </h1>
-        <p className="mt-2 text-xs lg:text-sm text-gray-300 max-w-xl font-body">
+        <p className="mt-2 text-xs lg:text-sm text-[#382c09] max-w-xl font-body leading-relaxed">
           Explore our complete range of SPED programs, diagnostic assessments, early intervention, play-based modules, and subject-focused tutoring tailored to your child’s goals.
         </p>
       </section>
 
       <div className="p-6 lg:p-10 space-y-10">
         {/* Quick Consultation Callout Box */}
-        <section className="bg-sky-50 border-2 border-[#8ec3eb] p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <section className="bg-amber-50/70 border-2 border-[#fbc232] p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#8ec3eb] text-white flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-full bg-[#fbc232] text-[#2a2208] flex items-center justify-center shrink-0 shadow-xs">
               <GraduationCap className="w-5 h-5" />
             </div>
             <div>
@@ -72,13 +71,13 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
           <div className="flex items-center gap-3 shrink-0">
             <a
               href="tel:+63289201456"
-              className="font-condensed text-xl font-bold text-sky-800 hover:text-sky-900"
+              className="font-condensed text-xl font-bold text-[#2b5da6] hover:text-[#1d4177]"
             >
               (02) 8920 1456
             </a>
             <button
               onClick={onContactSpecialist}
-              className="hero-btn-gradient text-white text-xs font-condensed uppercase px-4 py-2 font-bold cursor-pointer rounded-xs"
+              className="bg-[#fbc232] hover:bg-[#eab327] text-[#2a2208] text-xs font-condensed uppercase px-4 py-2 font-bold cursor-pointer rounded-xs border border-[#dfab28] shadow-xs"
             >
               Contact Specialist
             </button>
@@ -104,14 +103,14 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
                       category: category.title,
                     })
                   }
-                  className="border border-gray-200 p-4 bg-white hover:border-[#8ec3eb] hover:shadow-sm transition cursor-pointer flex flex-col justify-between group"
+                  className="border border-gray-200 p-4 bg-white hover:border-[#fbc232] hover:shadow-sm transition cursor-pointer flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <h3 className="font-condensed text-base font-bold text-[#35363a] group-hover:text-sky-700 uppercase">
+                      <h3 className="font-condensed text-base font-bold text-[#35363a] group-hover:text-[#2b5da6] uppercase">
                         {item.name}
                       </h3>
-                      <span className="text-[10px] uppercase font-condensed font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-xs">
+                      <span className="text-[10px] uppercase font-condensed font-bold text-[#2a2208] bg-[#fbc232]/30 px-2 py-0.5 rounded-xs border border-[#fbc232]/50">
                         {item.startingAt}
                       </span>
                     </div>
@@ -121,7 +120,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
                   </div>
                   <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
                     <span className="text-[11px] text-gray-400">{item.typicalCoverage}</span>
-                    <span className="text-sky-600 font-bold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-[#2b5da6] font-bold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                       <span>Details</span>
                       <ArrowRight className="w-3 h-3" />
                     </span>
@@ -135,7 +134,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
         {/* Online Learning Diagnostic & Program Intake Form */}
         <section className="border border-gray-200 bg-[#fbfbfb] p-6">
           <div className="flex items-center gap-2 mb-2">
-            <FileText className="w-5 h-5 text-[#8ec3eb]" />
+            <FileText className="w-5 h-5 text-[#fbc232]" />
             <h2 className="font-condensed text-2xl font-bold text-[#35363a] uppercase">
               Schedule an Assessment or Program Intake
             </h2>
@@ -158,7 +157,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
               <button
                 type="button"
                 onClick={() => setRequestSubmitted(false)}
-                className="text-xs font-condensed font-bold uppercase text-emerald-700 hover:underline"
+                className="text-xs font-condensed font-bold uppercase text-emerald-700 hover:underline cursor-pointer"
               >
                 Submit Another Request
               </button>
@@ -193,7 +192,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
                     value={learnerName}
                     onChange={(e) => setLearnerName(e.target.value)}
                     placeholder="e.g. Gabriel Reyes"
-                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none"
+                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#fbc232]"
                   />
                 </div>
                 <div>
@@ -206,7 +205,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
                     value={learnerAge}
                     onChange={(e) => setLearnerAge(e.target.value)}
                     placeholder="e.g. 7 years old / Grade 2"
-                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none font-condensed"
+                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none font-condensed focus:outline-none focus:border-[#fbc232]"
                   />
                 </div>
               </div>
@@ -220,7 +219,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Share details on learning style, attention span, reading challenges, teacher recommendations, or diagnosis if any..."
-                  className="w-full text-xs p-2.5 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#8ec3eb]"
+                  className="w-full text-xs p-2.5 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#fbc232]"
                 />
               </div>
 
@@ -230,7 +229,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({
                 </span>
                 <button
                   type="submit"
-                  className="hero-btn-gradient text-white font-condensed text-xs uppercase font-bold px-6 py-2 rounded-xs cursor-pointer"
+                  className="bg-[#fbc232] hover:bg-[#eab327] text-[#2a2208] font-condensed text-xs uppercase font-bold px-6 py-2 rounded-xs cursor-pointer border border-[#dfab28] shadow-xs"
                 >
                   Submit Intake Form
                 </button>

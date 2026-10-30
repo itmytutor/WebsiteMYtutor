@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, ShieldCheck, GraduationCap } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle2, GraduationCap } from 'lucide-react';
 
 interface ContactsScreenProps {
   onExplorePrograms?: () => void;
@@ -26,15 +26,15 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
 
   return (
     <div className="w-full bg-white flex flex-col">
-      {/* Banner */}
-      <section className="bg-[#8ec3eb] text-white px-6 lg:px-12 py-8">
-        <span className="text-[10px] uppercase font-condensed tracking-wider font-semibold text-sky-100 block mb-1">
+      {/* Banner: changed from skyblue to Grey #ebeceb */}
+      <section className="bg-[#ebeceb] border-b border-gray-300 text-[#35363a] px-6 lg:px-12 py-9">
+        <span className="text-[10px] uppercase font-condensed tracking-wider font-bold text-gray-500 block mb-1">
           Admissions, Consultations & Inquiries
         </span>
-        <h1 className="font-condensed text-3xl lg:text-4xl font-bold uppercase tracking-tight">
+        <h1 className="font-condensed text-3xl lg:text-4xl font-bold uppercase tracking-tight text-[#222326]">
           CONTACT MYTUTORPH
         </h1>
-        <p className="mt-2 text-xs lg:text-sm text-sky-50 max-w-xl font-body">
+        <p className="mt-2 text-xs lg:text-sm text-gray-600 max-w-xl font-body leading-relaxed">
           Connect directly with our educational coordinators to discuss your child’s unique needs, request learning assessments, or arrange 1-on-1 tutoring sessions.
         </p>
       </section>
@@ -43,27 +43,27 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
         {/* Contact Info Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="border border-gray-200 p-5 bg-[#fbfbfb]">
-            <div className="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
-              <Phone className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-full bg-gray-200 text-[#35363a] flex items-center justify-center mb-3">
+              <Phone className="w-4 h-4 text-[#2b5da6]" />
             </div>
             <h3 className="font-condensed text-base font-bold text-[#35363a] uppercase mb-1">
               Admissions Hotline
             </h3>
             <p className="text-xs text-gray-500 mb-2">Speak directly with a coordinator</p>
             <a
-              href="tel:+63289201456"
-              className="font-condensed text-lg font-bold text-sky-700 hover:text-sky-900 block"
+              href="tel:+639159937065"
+              className="font-condensed text-lg font-bold text-[#2b5da6] hover:text-[#1c3f73] block"
             >
-              +63 (02) 8920 1456
+              +63 915 993 7065
             </a>
             <span className="text-[10px] text-gray-400 mt-1 block">
-              Mon – Sat: 8:00 AM – 6:00 PM PHT
+              Mon - Fri: 8:00 AM - 5:00 PM
             </span>
           </div>
 
           <div className="border border-gray-200 p-5 bg-[#fbfbfb]">
-            <div className="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
-              <Mail className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-full bg-gray-200 text-[#35363a] flex items-center justify-center mb-3">
+              <Mail className="w-4 h-4 text-[#2b5da6]" />
             </div>
             <h3 className="font-condensed text-base font-bold text-[#35363a] uppercase mb-1">
               Email Coordination
@@ -71,36 +71,37 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
             <p className="text-xs text-gray-500 mb-2">Typically answered within 3 business hours</p>
             <div className="space-y-1 text-xs">
               <div>
-                <span className="text-[10px] text-gray-400 block">General Admissions:</span>
-                <span className="font-semibold text-gray-700">admissions@mytutorph.com</span>
-              </div>
-              <div>
-                <span className="text-[10px] text-gray-400 block">Assessments & SPED:</span>
-                <span className="font-semibold text-gray-700">sped@mytutorph.com</span>
+                <span className="text-[10px] text-gray-400 block">Email:</span>
+                <a
+                  href="mailto:admin@mytutorph.com"
+                  className="font-semibold text-gray-700 hover:text-[#2b5da6]"
+                >
+                  admin@mytutorph.com
+                </a>
               </div>
             </div>
           </div>
 
           <div className="border border-gray-200 p-5 bg-[#fbfbfb]">
-            <div className="w-8 h-8 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
-              <MapPin className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-full bg-gray-200 text-[#35363a] flex items-center justify-center mb-3">
+              <MapPin className="w-4 h-4 text-[#2b5da6]" />
             </div>
             <h3 className="font-condensed text-base font-bold text-[#35363a] uppercase mb-1">
               Learning Center Hub
             </h3>
-            <p className="text-xs text-gray-500 mb-2">Main office & diagnostic clinic</p>
+            <p className="text-xs text-gray-500 mb-2">Main Office</p>
             <address className="not-italic text-xs text-gray-700 space-y-0.5">
               <p className="font-semibold">MyTutorPH Learning Center</p>
-              <p>Katipunan Avenue, Loyola Heights</p>
-              <p>Quezon City, Metro Manila, Philippines</p>
+              <p>2/F Lucky Plaza Bldg., Burgos St.,</p>
+              <p>La Paz, Iloilo City</p>
             </address>
           </div>
         </div>
 
         {/* Online Contact Message Form */}
-        <section className="border border-gray-200 bg-[#f9f9f9] p-6">
+        <section id="inquiry-form" className="border border-gray-200 bg-[#f9f9f9] p-6 scroll-mt-20">
           <div className="flex items-center gap-2 mb-2">
-            <GraduationCap className="w-5 h-5 text-[#8ec3eb]" />
+            <GraduationCap className="w-5 h-5 text-[#2b5da6]" />
             <h2 className="font-condensed text-2xl font-bold text-[#35363a] uppercase">
               Send an Inquiry or Book an Assessment
             </h2>
@@ -151,7 +152,7 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Maria Santos"
-                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#8ec3eb]"
+                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#2b5da6]"
                   />
                 </div>
                 <div>
@@ -164,7 +165,7 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. maria.santos@example.com"
-                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#8ec3eb]"
+                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#2b5da6]"
                   />
                 </div>
                 <div>
@@ -177,7 +178,7 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="e.g. 0917-123-4567"
-                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#8ec3eb]"
+                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#2b5da6]"
                   />
                 </div>
                 <div>
@@ -189,7 +190,7 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
                     value={formData.childName}
                     onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
                     placeholder="e.g. Lucas Santos (Grade 3)"
-                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#8ec3eb]"
+                    className="w-full text-xs p-2 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#2b5da6]"
                   />
                 </div>
               </div>
@@ -223,7 +224,7 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell us about your child's current challenges, favorite subjects, learning pacing, or schedule preferences..."
-                  className="w-full text-xs p-2.5 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#8ec3eb]"
+                  className="w-full text-xs p-2.5 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-[#2b5da6]"
                 />
               </div>
 
@@ -233,9 +234,9 @@ export const ContactsScreen: React.FC<ContactsScreenProps> = ({}) => {
                 </span>
                 <button
                   type="submit"
-                  className="hero-btn-gradient text-white font-condensed text-xs uppercase font-bold px-6 py-2.5 rounded-xs flex items-center gap-1.5 cursor-pointer"
+                  className="bg-[#2b5da6] hover:bg-[#224d8b] text-white font-condensed text-xs uppercase font-bold px-6 py-2.5 rounded-xs flex items-center gap-1.5 cursor-pointer shadow-sm transition"
                 >
-                  <span>Submit Inquiry</span>
+                  <span>Submit</span>
                   <Send className="w-3.5 h-3.5" />
                 </button>
               </div>

@@ -21,43 +21,103 @@ export const Header: React.FC<HeaderProps> = ({
     'CONTACTS'
   ];
 
+  // Specific color configurations requested by user:
+  // Home: Green #69bc45
+  // About Us: Blue #2b5da6
+  // Services: Yellow #fbc232
+  // Contacts: Grey #ebeceb
+  const tabStyles: Record<
+    NavTab,
+    {
+      bg: string;
+      activeBg: string;
+      text: string;
+      activeText: string;
+      activeBorder: string;
+      hoverStyle: string;
+    }
+  > = {
+    'HOME': {
+      bg: 'bg-[#69bc45]',
+      activeBg: 'bg-[#5ea93e]',
+      text: 'text-white',
+      activeText: 'text-white',
+      activeBorder: 'border-b-4 border-[#3e7526]',
+      hoverStyle: 'hover:bg-[#5ea93e] hover:text-white',
+    },
+    'ABOUT US': {
+      bg: 'bg-[#2b5da6]',
+      activeBg: 'bg-[#224d8b]',
+      text: 'text-white',
+      activeText: 'text-white',
+      activeBorder: 'border-b-4 border-[#163664]',
+      hoverStyle: 'hover:bg-[#224d8b] hover:text-white',
+    },
+    'SERVICES': {
+      bg: 'bg-[#fbc232]',
+      activeBg: 'bg-[#e5ad23]',
+      text: 'text-[#2a2208]',
+      activeText: 'text-[#2a2208]',
+      activeBorder: 'border-b-4 border-[#a57608]',
+      hoverStyle: 'hover:bg-[#e5ad23] hover:text-[#2a2208]',
+    },
+    'CONTACTS': {
+      bg: 'bg-[#ebeceb]',
+      activeBg: 'bg-[#dcdddc]',
+      text: 'text-[#35363a]',
+      activeText: 'text-[#1e1f20]',
+      activeBorder: 'border-b-4 border-[#888988]',
+      hoverStyle: 'hover:bg-[#dcdddc] hover:text-[#1e1f20]',
+    },
+  };
+
   return (
     <header className="w-full bg-[#f4f4f4] border-b border-gray-200">
       <div className="flex flex-col md:flex-row items-center justify-between px-6 lg:px-12 py-0">
         {/* Logo and Mobile Toggle */}
-        <div className="w-full md:w-auto py-4 md:py-6 flex items-center justify-between">
+        <div className="w-full md:w-auto py-4 md:py-5 flex items-center justify-between">
           <button
             onClick={() => {
               onSelectTab('HOME');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="text-3xl lg:text-4xl tracking-tight uppercase font-condensed font-bold text-[#35363a] select-none hover:opacity-90 transition text-left cursor-pointer"
+            className="flex items-center gap-3 select-none hover:opacity-90 transition text-left cursor-pointer group"
           >
-            MyTutorPH
+            <img
+              src="/assets/aistudio/1_4688ea95.jpg"
+              alt="MyTutorPH Official Logo"
+              className="w-11 h-11 md:w-13 md:h-13 rounded-full object-cover border-2 border-[#fbc232] shadow-sm shrink-0"
+            />
+            <span className="text-3xl lg:text-4xl tracking-tight uppercase font-condensed font-bold select-none">
+              <span className="text-[#2b5da6]">MY</span>
+              <span className="text-[#69bc45]">TUTOR</span>
+              <span className="text-[#fbc232]">PH</span>
+            </span>
           </button>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none"
+            className="md:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none cursor-pointer"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex flex-wrap items-center justify-center font-condensed text-xs lg:text-[13px] tracking-wider uppercase font-semibold">
+        {/* Desktop Navigation Links with custom assigned colors */}
+        <nav className="hidden md:flex items-center font-condensed text-xs lg:text-[13px] tracking-wider uppercase font-bold">
           {navItems.map((tab) => {
             const isActive = activeTab === tab;
+            const style = tabStyles[tab];
             return (
               <button
                 key={tab}
                 onClick={() => onSelectTab(tab)}
-                className={`px-5 lg:px-6 py-5 transition-colors cursor-pointer border-b-2 ${
+                className={`px-5 lg:px-6 py-5 transition-all cursor-pointer font-condensed ${
                   isActive
-                    ? 'text-white bg-[#8cbbe0] border-[#7cb5df] shadow-sm'
-                    : 'text-[#444] border-transparent hover:text-[#8cbbe0] hover:bg-gray-100/70'
+                    ? `${style.activeBg} ${style.activeText} ${style.activeBorder} shadow-sm font-extrabold`
+                    : `${style.bg} ${style.text} ${style.hoverStyle} opacity-90 hover:opacity-100 border-b-4 border-transparent`
                 }`}
               >
                 {tab}
@@ -69,9 +129,10 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-3 space-y-1">
+        <div className="md:hidden bg-white border-t border-gray-200 px-4 py-3 space-y-2">
           {navItems.map((tab) => {
             const isActive = activeTab === tab;
+            const style = tabStyles[tab];
             return (
               <button
                 key={tab}
@@ -79,10 +140,10 @@ export const Header: React.FC<HeaderProps> = ({
                   onSelectTab(tab);
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full text-left font-condensed text-sm uppercase font-semibold px-3 py-2.5 rounded transition ${
+                className={`w-full text-left font-condensed text-sm uppercase font-bold px-4 py-3 rounded-xs transition-all ${
                   isActive
-                    ? 'bg-[#8cbbe0] text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? `${style.activeBg} ${style.activeText} ring-2 ring-black/20 font-extrabold`
+                    : `${style.bg} ${style.text} opacity-95 hover:opacity-100`
                 }`}
               >
                 {tab}

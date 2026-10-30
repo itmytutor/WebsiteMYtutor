@@ -13,12 +13,13 @@ export const CardDetailModal: React.FC<CardDetailModalProps> = ({
   onClose,
   onConsultationRequest,
 }) => {
-  if (!card) return null;
-
+  // Call all hooks unconditionally at top level
   const [parentName, setParentName] = useState('');
   const [childAge, setChildAge] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [inquirySent, setInquirySent] = useState(false);
+
+  if (!card) return null;
 
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();

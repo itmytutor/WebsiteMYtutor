@@ -11,6 +11,7 @@ export interface HeroSlide {
   subtitle: string;
   highlightText: string;
   ctaText: string;
+  ctaLink?: string;
   image: string;
   imageAlt: string;
   description?: string;

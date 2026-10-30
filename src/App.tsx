@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { NavTab, PromoCard } from './types';
+import { PROMO_CARDS } from './data/insuranceData';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AboutHomeScreen } from './components/screens/AboutHomeScreen';
@@ -12,6 +13,7 @@ import { AboutUsScreen } from './components/screens/AboutUsScreen';
 import { ServicesScreen } from './components/screens/ServicesScreen';
 import { ContactsScreen } from './components/screens/ContactsScreen';
 import { CardDetailModal } from './components/modals/CardDetailModal';
+import { ImageLightboxModal } from './components/modals/ImageLightboxModal';
 import { CategoryDetailModal } from './components/modals/CategoryDetailModal';
 import { PrivacyPolicyModal } from './components/modals/PrivacyPolicyModal';
 
@@ -29,6 +31,7 @@ export default function App() {
 
   // Modals state
   const [selectedPromoCard, setSelectedPromoCard] = useState<PromoCard | null>(null);
+  const [lightboxCard, setLightboxCard] = useState<PromoCard | null>(null);
   const [selectedCategoryItem, setSelectedCategoryItem] = useState<CategoryItemInfo | null>(null);
   const [selectedCategoryOverview, setSelectedCategoryOverview] = useState<{
     key: string;
@@ -40,9 +43,34 @@ export default function App() {
     setSelectedCategoryOverview({ key, title });
   };
 
-  const handleSelectTab = (tab: NavTab) => {
+  const handleSelectTab = (tab: NavTab, scrollToForm = false) => {
     setActiveTab(tab);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (scrollToForm) {
+      setTimeout(() => {
+        const formEl = document.getElementById('inquiry-form');
+        if (formEl) {
+          formEl.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleNextPhoto = () => {
+    if (!lightboxCard) return;
+    const currentIndex = PROMO_CARDS.findIndex((c) => c.id === lightboxCard.id);
+    const nextIndex = (currentIndex + 1) % PROMO_CARDS.length;
+    setLightboxCard(PROMO_CARDS[nextIndex]);
+  };
+
+  const handlePrevPhoto = () => {
+    if (!lightboxCard) return;
+    const currentIndex = PROMO_CARDS.findIndex((c) => c.id === lightboxCard.id);
+    const prevIndex = (currentIndex - 1 + PROMO_CARDS.length) % PROMO_CARDS.length;
+    setLightboxCard(PROMO_CARDS[prevIndex]);
   };
 
   return (
@@ -60,9 +88,10 @@ export default function App() {
           {activeTab === 'HOME' && (
             <AboutHomeScreen
               onOpenCardDetail={(card) => setSelectedPromoCard(card)}
+              onOpenPhotoOnly={(card) => setLightboxCard(card)}
               onSelectItem={(item) => setSelectedCategoryItem(item)}
               onSelectCategoryOverview={handleSelectCategoryOverview}
-              onNavigateToContacts={() => handleSelectTab('CONTACTS')}
+              onNavigateToContacts={(scrollToForm) => handleSelectTab('CONTACTS', scrollToForm)}
               onNavigateToServices={() => handleSelectTab('SERVICES')}
             />
           )}
@@ -92,40 +121,61 @@ export default function App() {
         <Footer onOpenPrivacyPolicy={() => setPrivacyPolicyOpen(true)} />
       </div>
 
-      {/* Global Interactive Modals */}
-      <CardDetailModal
-        card={selectedPromoCard}
-        onClose={() => setSelectedPromoCard(null)}
-        onConsultationRequest={() => {
-          setSelectedPromoCard(null);
-          handleSelectTab('CONTACTS');
-        }}
-      />
+      {/* 1. Photo-Only Modal: Opens when user clicks the photo */}
+      {lightboxCard && (
+        <ImageLightboxModal
+          card={lightboxCard}
+          onClose={() => setLightboxCard(null)}
+          onViewDetails={(card) => {
+            setLightboxCard(null);
+            setSelectedPromoCard(card);
+          }}
+          onNext={handleNextPhoto}
+          onPrev={handlePrevPhoto}
+        />
+      )}
 
-      <CategoryDetailModal
-        item={selectedCategoryItem}
-        categoryTitle={selectedCategoryOverview?.title}
-        categoryKey={selectedCategoryOverview?.key}
-        onClose={() => {
-          setSelectedCategoryItem(null);
-          setSelectedCategoryOverview(null);
-        }}
-        onOpenQuoteModal={() => {
-          setSelectedCategoryItem(null);
-          setSelectedCategoryOverview(null);
-          handleSelectTab('CONTACTS');
-        }}
-        onOpenAgentFinder={() => {
-          setSelectedCategoryItem(null);
-          setSelectedCategoryOverview(null);
-          handleSelectTab('CONTACTS');
-        }}
-      />
+      {/* 2. Full Details & Consultation Modal: Opens only when clicking "View Details" */}
+      {selectedPromoCard && (
+        <CardDetailModal
+          card={selectedPromoCard}
+          onClose={() => setSelectedPromoCard(null)}
+          onConsultationRequest={() => {
+            setSelectedPromoCard(null);
+            handleSelectTab('CONTACTS');
+          }}
+        />
+      )}
 
-      <PrivacyPolicyModal
-        isOpen={privacyPolicyOpen}
-        onClose={() => setPrivacyPolicyOpen(false)}
-      />
+      {/* Category / Sub-program Modal */}
+      {(selectedCategoryItem || selectedCategoryOverview) && (
+        <CategoryDetailModal
+          item={selectedCategoryItem}
+          categoryTitle={selectedCategoryOverview?.title}
+          categoryKey={selectedCategoryOverview?.key}
+          onClose={() => {
+            setSelectedCategoryItem(null);
+            setSelectedCategoryOverview(null);
+          }}
+          onOpenQuoteModal={() => {
+            setSelectedCategoryItem(null);
+            setSelectedCategoryOverview(null);
+            handleSelectTab('CONTACTS');
+          }}
+          onOpenAgentFinder={() => {
+            setSelectedCategoryItem(null);
+            setSelectedCategoryOverview(null);
+            handleSelectTab('CONTACTS');
+          }}
+        />
+      )}
+
+      {privacyPolicyOpen && (
+        <PrivacyPolicyModal
+          isOpen={privacyPolicyOpen}
+          onClose={() => setPrivacyPolicyOpen(false)}
+        />
+      )}
     </div>
   );
 }

@@ -5,34 +5,35 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: 'tutor-support',
     tagline1: 'LOOKING',
     tagline2: 'FOR',
-    subtitle: 'clear and simple',
+    subtitle: 'CLEAR AND SIMPLE',
     highlightText: 'LEARNING SUPPORT?',
-    ctaText: 'FIND A TUTOR',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC5YzsLXHuXtFBrf6Vu8WQ7_eNhSpnQH_CeSBk6KdZM5I9mB1aBkSjHxFGpmyZu8H24Kjnl_MmpgFexloe-UOCYasRb3zTZvwXlCSz52iq2G9_Cr_bz6p-C9NUl1vkND9qR6_tOc5jZp8ohitzo9CZF8oupWZKMlQ0Yjn9UKPJZMSWGo6pHVuL0I3dqIbPfDi8X2TAIaD2oRtRKbTtP4jPRcE4Q4oL-ZyovGqbFSKP1zkaAOqqJfHHPl_PP-2WwORXOuv4',
-    imageAlt: 'Young boy with magnifying glass discovering new knowledge',
+    ctaText: 'ENROLL NOW',
+    image: '/assets/aistudio/7_14700521.jpg',
+    imageAlt: 'MyTutorPH dedicated team of educators and special education specialists',
     description: 'Empowering children with individualized tutoring, SPED programs, and developmental interventions tailored to every learner’s pace.'
   },
   {
     id: 'early-intervention',
-    tagline1: 'NURTURE',
-    tagline2: 'EARLY',
-    subtitle: 'play-based & engaging',
-    highlightText: 'CHILD DEVELOPMENT',
-    ctaText: 'EXPLORE PROGRAMS',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Happy young students learning together',
-    description: 'Specialized interventions and developmental milestone support to build lifelong curiosity and academic confidence.'
+    tagline1: 'MYTUTOR',
+    tagline2: 'AND',
+    subtitle: '',
+    highlightText: 'THE GIFTED',
+    ctaText: 'OFFER SERVICES',
+    image: '/assets/aistudio/announcement_template_bfb97eec.jpg',
+    imageAlt: 'MyTutorPH and The GiftEd progressive school partnership announcement',
+    description: 'Together, MYTUTOR and The GiftEd deliver a holistic educational approach—blending tailored SPED instruction, guided tutoring, and progressive preschool learning to empower young minds.'
   },
   {
     id: 'subject-mastery',
-    tagline1: 'EXCEL',
+    tagline1: 'AVAILABLE',
     tagline2: 'IN',
-    subtitle: 'personalized 1-on-1',
-    highlightText: 'SUBJECT MASTERY',
-    ctaText: 'BOOK CONSULTATION',
-    image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Focused student receiving personalized instruction',
-    description: 'Targeted support in Mathematics, Science, Reading, and English with certified, patient educators across the Philippines.'
+    subtitle: 'WEBSITE AND',
+    highlightText: 'MOBILE',
+    ctaText: 'Google Play',
+    ctaLink: 'https://play.google.com/store/apps/details?id=com.mytutorph.app&pcampaignid=web_share',
+    image: '/assets/aistudio/6_8505cdde.jpg',
+    imageAlt: 'MyTutorPH platform available on laptop web browser and mobile smartphone',
+    description: '"Your favorite experience, anytime, anywhere." Access all your features seamlessly whether you\'re on your phone or on the web.'
   }
 ];
 
